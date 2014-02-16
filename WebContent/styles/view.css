@@ -1,0 +1,22 @@
+/* --------------------------- 	*/
+/* 2012 Crmsolve Ltd 						*/
+/* CSS for the View system			*/
+/* --------------------------- 	*/
+
+.view {
+	position: absolute;
+	border: solid 1px #ccc;
+	background-color: #f9f9f9;
+	z-index:1;
+	box-shadow: 5px 5px 10px #777;
+}
+
+.view #close {
+	position: absolute;
+	width:32px;
+	height:32px;
+	right:-16px;
+	top:-16px;
+	background-image: url(../images/icon_close.png);
+	cursor:pointer;
+}
