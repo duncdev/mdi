@@ -1,129 +1,154 @@
 body {
-	background-color:white;
-	font-family:arial, sans-serif;
+  background-color: white;
+  font-family: arial, sans-serif;
 }
 
 /* Each page switched by the menu */
 .section {
-	position: absolute;
-	top:91px;
-	width:100%;
-	z-index:1;
+  position: absolute;
+  top: 91px;
+  width: 100%;
+  z-index: 1;
 }
 
 /* General modal prompt */
 .prompt2 {
-	font-weight:100;
-	font-size:0.8em;
+  font-weight: 100;
+  font-size: 0.8em;
 }
 
 .about {
-  position:relative;
-  top:10px;
-  left:10px;
+  position: relative;
+  top: 10px;
+  left: 10px;
   font-size: 0.9em;
-  color:#6b6a6a;
-  margin:0px;
+  color: #6b6a6a;
+  margin: 0px;
 }
 
 /* The outer centred view port */
 #outer {
-	position:relative;
-	width:900px;
-	height:600px;
-	margin:0px auto;
+  position: relative;
+  width: 900px;
+  height: 600px;
+  margin: 0px auto;
 }
 
 #container {
-	position:relative;
-	background-color:#f1f1f1;
-	height:100%;
-	box-shadow:1px 2px 2px 2px #6b6a6a;
+  position: relative;
+  background-color: #f1f1f1;
+  height: 100%;
+  box-shadow: 1px 2px 2px 2px #6b6a6a;
 }
 
 /* The header logo area */
 #titlebar {
-	height:60px;
-	padding:15px;	
-	background-color:#f9f9f9;
+  height: 60px;
+  padding: 15px;
+  background-color: #f9f9f9;
 }
 
 #titlebar a {
-	font-family:sans-serif;
-	font-size:1.4em;
-	font-weight:100;
-	color:#6b6a6a;
-	text-shadow: 1px 1px 2px #afafaf;
-	text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1.4em;
+  font-weight: 100;
+  color: #6b6a6a;
+  text-shadow: 1px 1px 2px #afafaf;
+  text-decoration: none;
 }
 
-#titlebar a:last-child {	
-	position:absolute;
-	right:20px;
+#titlebar a:last-child {
+  position: absolute;
+  right: 20px;
 }
 
 #titlebar a:hover {
-	text-shadow: 1px 1px white;
+  text-shadow: 1px 1px white;
 }
-
 
 #menubar {
-	position:absolute;
-	top:66px;	
-	width:100%;	
-	height:25px;	
-	background:rgb(191,191,191);
-	background:-moz-linear-gradient(top, rgba(191,191,191,1) 0%, rgba(255,255,255,1) 100%); 
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(191,191,191,1)));
-	background:-webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(191,191,191,1) 100%);
-	background:-o-linear-gradient(top, rgba(191,191,191,1) 0%,rgba(255,255,255,1) 100%);
-	background:-ms-linear-gradient(top, rgba(191,191,191,1) 0%,rgba(255,255,255,1) 100%);
-	background:linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(191,191,191,1) 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfbfbf', endColorstr='#ffffff',GradientType=0 );
+  position: absolute;
+  top: 66px;
+  width: 100%;
+  height: 25px;
+  background: rgb(191, 191, 191);
+  background: -moz-linear-gradient(
+    top,
+    rgba(191, 191, 191, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(255, 255, 255, 1)),
+    color-stop(100%, rgba(191, 191, 191, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(191, 191, 191, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(191, 191, 191, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(191, 191, 191, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(191, 191, 191, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfbfbf', endColorstr='#ffffff',GradientType=0 );
 }
- 
+
 #menubar ul {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 #menubar ul li {
-  display:block;
-  position:relative;
-  float:left;
-  height:25px;
+  display: block;
+  position: relative;
+  float: left;
+  height: 25px;
 }
 
 #menubar li ul {
-  display:none; 
-  background-color:'#cfcfcf';
-  border-bottom:1px solid white;
-  z-index:10000;
+  display: none;
+  background-color: "#cfcfcf";
+  border-bottom: 1px solid white;
+  z-index: 10000;
 }
 
 #menubar ul li button {
-	height:100%;
-	width:12em;
-	font-family:arial, sans-serif;
-	font-size:0.8em;
-	font-weight:100;
-	color:rgb(90,90,90);
-	background-color:transparent;
-	border:none;
-	border-right:2px groove;
-	cursor:pointer;		
-	margin-top:-1px;
-	margin-bottom: 0px;
-  display:block;
-  position:relative;
-  margin:0;
+  height: 100%;
+  width: 12em;
+  font-family: arial, sans-serif;
+  font-size: 0.8em;
+  font-weight: 100;
+  color: rgb(90, 90, 90);
+  background-color: transparent;
+  border: none;
+  border-right: 2px groove;
+  cursor: pointer;
+  margin-top: -1px;
+  margin-bottom: 0px;
+  display: block;
+  position: relative;
+  margin: 0;
 }
 
 #menubar li ul li button {
-	text-align: left;
-  border-right:none;
-	background-color:rgb(160,160,160);
-	border-right:1px solid white;
+  text-align: left;
+  border-right: none;
+  background-color: rgb(160, 160, 160);
+  border-right: 1px solid white;
 }
 
 #menubar li ul li:last-child {
@@ -135,62 +160,58 @@ body {
   border-bottom-right-radius: 5px;
 }
 
-
-#menubar ul li button:hover { 
-	background-color:rgba(70,70,70,0.3);
-	color:white;
+#menubar ul li button:hover {
+  background-color: rgba(70, 70, 70, 0.3);
+  color: white;
 }
 
 #menubar li:hover ul {
-	display:block;
-  position:absolute;
+  display: block;
+  position: absolute;
 }
 
-#menubar li:hover button { 
-	background-color:'#8f8f8f';
-	color:white;
+#menubar li:hover button {
+  background-color: "#8f8f8f";
+  color: white;
 }
 
-#menubar li:hover  
-{ 
-	background-color:rgba(121,121,121,1);	
+#menubar li:hover {
+  background-color: rgba(121, 121, 121, 1);
 }
 
 .headerButtonActive {
-	background-color:rgba(70,70,70,0.3) !important;
-	color:white !important;
+  background-color: rgba(70, 70, 70, 0.3) !important;
+  color: white !important;
 }
 
 #footer {
-	position:absolute;
-	background-color:#6a6a6a;
-	width:100%;	
-	bottom:0px;
-	height:35px;
-	text-align:left;
-	padding-top:15px;
+  position: absolute;
+  background-color: #6a6a6a;
+  width: 100%;
+  bottom: 0px;
+  height: 35px;
+  text-align: left;
+  padding-top: 15px;
 }
 
 #footer span {
-	font-size:small;
-	font-weight:200;
-	color:white;
-	padding:20px;	
+  font-size: small;
+  font-weight: 200;
+  color: white;
+  padding: 20px;
 }
 
 #footer span:last-child {
-  position:absolute;
-  top:0px;
-  right:5px; 
+  position: absolute;
+  top: 0px;
+  right: 5px;
 }
 
 #footer span:last-child a {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 
 #footer span a:hover {
-	text-decoration:underline;
+  text-decoration: underline;
 }
-
-

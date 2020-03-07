@@ -7,69 +7,68 @@
 /* Grid header button styles */
 /* ------------------------- */
 
-.ui-jqgrid-title {	
-	font-family:arial,sans-serif;
-	color:#5f5f5f;
+.ui-jqgrid-title {
+  font-family: arial, sans-serif;
+  color: #5f5f5f;
 }
 
 /* Set of grid header buttons */
 .gridButtons {
-	position:absolute;
-	top:8px;
-	right:-10px;
-	height:16px;
-	font-weight:300;
+  position: absolute;
+  top: 8px;
+  right: -10px;
+  height: 16px;
+  font-weight: 300;
 }
 
 /* Add button outer box */
 .gridButtonAdd {
-	background-image:url(../images/icon_add_d.png);
-	background-repeat: no-repeat;
-	float:left;
-	height:16px;
-	cursor:default;
-	opacity:0.5;
+  background-image: url(../images/icon_add_d.png);
+  background-repeat: no-repeat;
+  float: left;
+  height: 16px;
+  cursor: default;
+  opacity: 0.5;
 }
 
 /* Add button text */
 .gridButtonAdd span {
-	position: relative;
-	top:-3px;
-	font-size: 0.7em;
-	padding-left: 20px;
-	padding-right: 20px;	
+  position: relative;
+  top: -3px;
+  font-size: 0.7em;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* Add button enabled */
 .gridButtonAddOn {
-	background-image:url(../images/icon_add_e.png) !important;
-	cursor:pointer !important;
-	opacity:1 !important;
+  background-image: url(../images/icon_add_e.png) !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
 }
-
 
 /* Delete button outer box */
 .gridButtonDelete {
-	background-image:url(../images/icon_delete_d.png);
-	background-repeat: no-repeat;
-	float:left;
-	height:16px;
-	cursor:default;
-	opacity:0.5;
+  background-image: url(../images/icon_delete_d.png);
+  background-repeat: no-repeat;
+  float: left;
+  height: 16px;
+  cursor: default;
+  opacity: 0.5;
 }
 
 /* Delete button text */
 .gridButtonDelete span {
-	position:relative;
-	top:-3px;
-	font-size:0.7em;
-	padding-left:20px;
-	padding-right:20px;
+  position: relative;
+  top: -3px;
+  font-size: 0.7em;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* Delete button enabled */
 .gridButtonDeleteOn {
-	background-image:url(../images/icon_delete_e.png) !important;
-	cursor:pointer !important;
-	opacity:1 !important;
+  background-image: url(../images/icon_delete_e.png) !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
 }

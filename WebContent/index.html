@@ -1,296 +1,385 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
+  <head>
+    <meta name="author" content="P Duncombe" />
+    <meta name="copyright" content="&copy; 2012 Crmsolve Ltd" />
+    <meta
+      name="description"
+      content="A page to demonstrate a multiple document interface using native Javascript object orientation, an in-browser database emulator and limited plugin dependencies."
+    />
+    <meta
+      name="keywords"
+      content="multiple document interface MDI javascript prototypal object oriented"
+    />
+    <meta charset="UTF-8" />
+    <title>Crmsolve.org</title>
 
-<head>
-	<meta name='author' content='P Duncombe'>
-	<meta name='copyright' content='&copy; 2012 Crmsolve Ltd'>
-	<meta name='description' content='A page to demonstrate a multiple document interface using native Javascript object orientation, an in-browser database emulator and limited plugin dependencies.'>
-	<meta name='keywords' content='multiple document interface MDI javascript prototypal object oriented'>
-	<meta charset='UTF-8'>
-	<title>Crmsolve.org</title> 
+    <link
+      href="jquery-ui-1.9.0.custom/css/custom/jquery-ui-1.9.0.custom.css"
+      rel="stylesheet"
+    />
+    <link href="jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
 
-	<link href='jquery-ui-1.9.0.custom/css/custom/jquery-ui-1.9.0.custom.css'  rel='stylesheet'>
-	<link href='jqgrid/css/ui.jqgrid.css'  rel='stylesheet'>
+    <link href="styles/view.css" rel="stylesheet" />
+    <link href="styles/viewForm.css" rel="stylesheet" />
+    <link href="styles/viewList.css" rel="stylesheet" />
 
-	<link href='styles/view.css'           rel='stylesheet'>
-	<link href='styles/viewForm.css'       rel='stylesheet'>
-	<link href='styles/viewList.css'       rel='stylesheet'>
+    <link href="styles/main.css" rel="stylesheet" />
+  </head>
 
-	<link href='styles/main.css'           rel='stylesheet'>
-</head>
+  <body>
+    <script
+      src="jquery-ui-1.9.0.custom/js/jquery-1.8.2.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="jquery-ui-1.9.0.custom/js/jquery-ui-1.9.0.custom.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="jqgrid/js/jquery.jqGrid.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="jqgrid/js/i18n/grid.locale-en.js"
+      type="text/javascript"
+    ></script>
 
+    <script src="js/crmsolve.js" type="text/javascript"></script>
 
-<body>
+    <script src="js/FormEdit.js" type="text/javascript"></script>
 
-	<script src='jquery-ui-1.9.0.custom/js/jquery-1.8.2.js' 								type='text/javascript'></script>
-	<script src='jquery-ui-1.9.0.custom/js/jquery-ui-1.9.0.custom.min.js' 	type='text/javascript'></script>
-	<script src='jqgrid/js/jquery.jqGrid.min.js'														type='text/javascript'></script>
-	<script src='jqgrid/js/i18n/grid.locale-en.js' 													type='text/javascript'></script>
-	
-	<script src='js/crmsolve.js' 											type='text/javascript'></script>
-	
-	<script src='js/FormEdit.js' 											type='text/javascript'></script>
-	
-	<script src='js/Data.js' 													type='text/javascript'></script>
-	<script src='js/DataClient.js' 										type='text/javascript'></script>
-	<script src='js/DataProduct.js' 									type='text/javascript'></script>
-	<script src='js/DataSalesTeam.js' 								type='text/javascript'></script>
-	
-	<script src='js/View.js' 													type='text/javascript'></script>
-	
-	<script src='js/ViewList.js' 											type='text/javascript'></script>
-	<script src='js/ViewListClient.js' 								type='text/javascript'></script>
-	<script src='js/ViewListProduct.js' 							type='text/javascript'></script>
-	<script src='js/ViewListSalesTeam.js' 						type='text/javascript'></script>
+    <script src="js/Data.js" type="text/javascript"></script>
+    <script src="js/DataClient.js" type="text/javascript"></script>
+    <script src="js/DataProduct.js" type="text/javascript"></script>
+    <script src="js/DataSalesTeam.js" type="text/javascript"></script>
 
-	
-	<script src='js/ViewForm.js' 											type='text/javascript'></script>
-	<script src='js/ViewFormClient.js' 								type='text/javascript'></script>
-	<script src='js/ViewFormProduct.js' 							type='text/javascript'></script>
-	<script src='js/ViewFormSalesTeam.js' 						type='text/javascript'></script>
+    <script src="js/View.js" type="text/javascript"></script>
 
-	<script src='js/main.js' 													type='text/javascript'></script>
-		
-	
-	<div id='outer'>
-	
-		<div id='container'>
-			
-			<div id='titlebar'>
-			 <a href='http://www.crmsolve.org/crmsolve'>CRMsolve.org</a>
-			 <a href='#' onclick='location.reload(true); return false;'>multiple document interface</a>
-			</div>
-											
-			<nav id='menubar'>
-				<ul>
-					<li><button id='file'>file</button>
-						<ul>
-							<li><button id='file_list_clients'>list clients</button></li>
-							<li><button id='file_list_products'>list products</button></li>
-							<li><button id='file_list_salesteams'>list sales teams</button></li>
-							<li><button id='file_new_client'>new client</button></li>
-							<li><button id='file_new_product'>new product</button></li>
-							<li><button id='file_new_salesteam'>new sales team</button></li>
-						</ul>
-					</li>
-					<li><button id='file_window'>window</button>
-					  <ul>
-					    <li><button id='window_close_all'>close all</button></li>
-					  </ul>
-					</li>
-					<li><button id='about'>about</button></li>
-				</ul>
-			</nav>
-											
-			<div id='section_file' class='section'>
-			
-				<div id='fileListClient' class='view'>
-					<table id='fileGridClient'></table>
-					<div class='gridButtons'>
-						<div id='add'><span>Add</span></div>
-						<div id='delete'><span>Delete</span></div>
-					</div>
-					<div id='close'></div>
-				</div>
-				
-				<div id='fileFormClient' class='view'>				
-					<span class='formTitle'>Client</span>
-					
-					<form>
-					
-						<fieldset class='fieldsetLeft'>		
-						
-							<input type='hidden' name='id' id='id'/>
-									
-							<label for='ref' class='label4'>Ref</label>
-							<input type='text' name='ref' id='ref' autofocus
-								placeholder='C0000' pattern='[A-Z][0-9]{4}' class='input6'
-								required title='The client reference code'/>		
-							<br/>
-							<label for='name' class='label4'>Name</label>
-							<input type='text' name='name' id='name'
-								placeholder='Company Name' class='input16'
-								required title='Enter the full client name'/>	
-							<br/>
-							<label for='url' class='label4'>URL</label>
-							<input type='url' name='url' id='url'
-								placeholder='http://www...' class='input20'
-							    title='The clients web address'/>
-							<br/>
-							<label for='email' class='label4'>Email</label>
-							<input type='email' name='email' id='email'
-								placeholder='name@company.com' class='input18'
-								title='The primary email contact'/>		
-							<br/>			
-							<label for='tel' class='label4'>Tel</label>
-							<input type='tel' name='tel' id='tel'
-								placeholder='' pattern='\+?[\d| |-]{3,18}' class='input12'
-								title='The main telephone number'/>
-						</fieldset>
-						
-						<fieldset class='fieldsetRight'>
-							<label for='address1' class='label6'>Address</label>
-							<input type='text' name='address1' id='address1'
-								placeholder='address line 1' class='input16'
-								title='The first line of the address'/>
-							<br/>
-							<label for='address1' class='label6'>&nbsp;</label>
-							<input type='text' name='address2' id='address2'
-								placeholder='address line 2' class='input16'
-								title='The second line of the address'/>
-							<br/>
-							<label for='address3' class='label6'>&nbsp;</label>
-							<input type='text' name='address3' id='address3'
-								placeholder='address line 3' class='input16'
-								title='The third line of the address'/>							
-							<br/>
-							<label for='postcode' class='label6'>Postcode</label>
-							<input type='text' name='postcode' id='postcode'
-								placeholder='post code' class='input8'
-								title='The postcode'/>						
-							<br/>
-							<label for='country' class='label6'>Country</label>
-							<input type='text' name='country' id='country'
-								placeholder='country' class='input10'
-								title='The country'/>
-							<br/>
-						</fieldset>
-						<br/>
-						
-						<fieldset class='fieldSetLeft'>
-							<label for='notes' class='label4'>Notes</label>
-							<textarea name='notes' id='notes' autofocus
-								placeholder='free text notes' rows=5 cols=68
-								title='Notes about the client'></textarea>
-							<br/>
-						</fieldset>
-						
-						<button type='submit' id='save'>save</button>
-						
-					</form>
-					<div id='close'></div>
-	
-				</div>
-				
-				<div id='fileListProduct' class='view'>
-					<table id='fileGridProduct'></table>
-					<div class='gridButtons'>
-						<div id='add'><span>Add</span></div>
-						<div id='delete'><span>Delete</span></div>
-					</div>
-					<div id='close'></div>
-				</div>
-				
-				<div id='fileFormProduct' class='view'>
-					<span class='formTitle'>Product</span>
-					<form>
-						<fieldset class='fieldSetLeft'>						
-							<input type='hidden' name='id' id='id'/>
-							
-							<label for='ref' class='label4'>Ref</label>
-							<input type='text' name='ref' id='formProductRef' autofocus
-								placeholder='P000' pattern='[A-Z][0-9]{3}' class='input6'
-								required title='The product reference code'/>
-							
-							<br/>
-							<label for='name' class='label4'>Name</label>
-							<input type='text' name='name' id='formProductName'
-								placeholder='product name' class='input14'
-								title='Enter the product name'/>														
-						</fieldset>
-						
-						<button type='submit' id='save'>save</button>
-					</form>
-					<div id='close'></div>
-	
-				</div>
-				
-				<div id='fileListSalesTeam' class='view'>
-					<table id='fileGridSalesTeam'></table>
-					<div class='gridButtons'>
-						<div id='add'><span>Add</span></div>
-						<div id='delete'><span>Delete</span></div>
-					</div>
-					<div id='close'></div>
-				</div>
-				
-				<div id='fileFormSalesTeam' class='view'>
-					<span class='formTitle'>Sales Team</span>
-					<form>
-						<fieldset>						
-							<input type='hidden' name='id' id='id'/>
-							
-							<label for='ref' class='label4'>Ref</label>
-							<input type='text' name='ref' id='formSalesTeamRef' autofocus
-								placeholder='S000' pattern='[A-Z][0-9]{3}' class='input6'
-								required title='The sales team ref code'/>
-							<br/>
-							
-							<label for='name' class='label4'>Name</label>
-							<input type='text' name='name' id='formSalesTeamName'
-								placeholder='team name' class='input14'
-								title='Enter the sales team name'/>								
-						</fieldset>
-						
-						<button type='submit' id='save'>save</button>
-					</form>
-					<div id='close'></div>
-	
-				</div>
+    <script src="js/ViewList.js" type="text/javascript"></script>
+    <script src="js/ViewListClient.js" type="text/javascript"></script>
+    <script src="js/ViewListProduct.js" type="text/javascript"></script>
+    <script src="js/ViewListSalesTeam.js" type="text/javascript"></script>
 
-			</div>
-			
-			<div id='section_about' class='section'>
-		   
-		   <div class='about'>
-		   
-		    <span>Browsers tested :</span>
-		    <ul>
-			   <li>IE10</li>
-			   <li>Firefox18</li>
-  			 <li>Chrome 24</li>
-    		 <li>Safari 6</li>
-    		</ul>
-    		
-    		<span>Plugins used :</span>
-    		<ul>
-    		  <li>jQuery 1.8.2</li>
-    		  <li>jQuery UI 1.9.0</li>
-    		  <li>jqGrid</li>
-    		</ul>
-    		    		
-    		<span>Features :</span>
-    		<ul>
-    		  <li>Native Javascript Prototypal Objects</li>
-    		  <li>Model View Controller</li>
-    		  <li>Local Database Emulator</li>
-    		  <li>Simple to implement new database entities</li>
-    		</ul>
-    		
-    		<span>Under Development :</span>
-    		<ul>
-    		  <li>Show a list of open windows in the menu</li>
-    		  <li>Form input validation</li>
-    		  <li>Edit-undo</li>
-    		</ul>
-    					 
-			 </div>
+    <script src="js/ViewForm.js" type="text/javascript"></script>
+    <script src="js/ViewFormClient.js" type="text/javascript"></script>
+    <script src="js/ViewFormProduct.js" type="text/javascript"></script>
+    <script src="js/ViewFormSalesTeam.js" type="text/javascript"></script>
 
-			</div>
-	
-			<div id='section_contact' class='section'>
-			</div>
-			
-	
-			<div id='footer'>
-			 <span>&copy; CRMsolve ltd</span>
-			 <span><a href='mailto:info@crmsolve.org'>info@crmsolve.org</a></span>
-			</div>
-			
-		</div>
-					
-	</div>
-	
-</body>
+    <script src="js/main.js" type="text/javascript"></script>
 
+    <div id="outer">
+      <div id="container">
+        <div id="titlebar">
+          <a href="http://www.crmsolve.org/crmsolve">CRMsolve.org</a>
+          <a href="#" onclick="location.reload(true); return false;"
+            >multiple document interface</a
+          >
+        </div>
+
+        <nav id="menubar">
+          <ul>
+            <li>
+              <button id="file">file</button>
+              <ul>
+                <li><button id="file_list_clients">list clients</button></li>
+                <li><button id="file_list_products">list products</button></li>
+                <li>
+                  <button id="file_list_salesteams">list sales teams</button>
+                </li>
+                <li><button id="file_new_client">new client</button></li>
+                <li><button id="file_new_product">new product</button></li>
+                <li><button id="file_new_salesteam">new sales team</button></li>
+              </ul>
+            </li>
+            <li>
+              <button id="file_window">window</button>
+              <ul>
+                <li><button id="window_close_all">close all</button></li>
+              </ul>
+            </li>
+            <li><button id="about">about</button></li>
+          </ul>
+        </nav>
+
+        <div id="section_file" class="section">
+          <div id="fileListClient" class="view">
+            <table id="fileGridClient"></table>
+            <div class="gridButtons">
+              <div id="add"><span>Add</span></div>
+              <div id="delete"><span>Delete</span></div>
+            </div>
+            <div id="close"></div>
+          </div>
+
+          <div id="fileFormClient" class="view">
+            <span class="formTitle">Client</span>
+
+            <form>
+              <fieldset class="fieldsetLeft">
+                <input type="hidden" name="id" id="id" />
+
+                <label for="ref" class="label4">Ref</label>
+                <input
+                  type="text"
+                  name="ref"
+                  id="ref"
+                  autofocus
+                  placeholder="C0000"
+                  pattern="[A-Z][0-9]{4}"
+                  class="input6"
+                  required
+                  title="The client reference code"
+                />
+                <br />
+                <label for="name" class="label4">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Company Name"
+                  class="input16"
+                  required
+                  title="Enter the full client name"
+                />
+                <br />
+                <label for="url" class="label4">URL</label>
+                <input
+                  type="url"
+                  name="url"
+                  id="url"
+                  placeholder="http://www..."
+                  class="input20"
+                  title="The clients web address"
+                />
+                <br />
+                <label for="email" class="label4">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="name@company.com"
+                  class="input18"
+                  title="The primary email contact"
+                />
+                <br />
+                <label for="tel" class="label4">Tel</label>
+                <input
+                  type="tel"
+                  name="tel"
+                  id="tel"
+                  placeholder=""
+                  pattern="\+?[\d| |-]{3,18}"
+                  class="input12"
+                  title="The main telephone number"
+                />
+              </fieldset>
+
+              <fieldset class="fieldsetRight">
+                <label for="address1" class="label6">Address</label>
+                <input
+                  type="text"
+                  name="address1"
+                  id="address1"
+                  placeholder="address line 1"
+                  class="input16"
+                  title="The first line of the address"
+                />
+                <br />
+                <label for="address1" class="label6">&nbsp;</label>
+                <input
+                  type="text"
+                  name="address2"
+                  id="address2"
+                  placeholder="address line 2"
+                  class="input16"
+                  title="The second line of the address"
+                />
+                <br />
+                <label for="address3" class="label6">&nbsp;</label>
+                <input
+                  type="text"
+                  name="address3"
+                  id="address3"
+                  placeholder="address line 3"
+                  class="input16"
+                  title="The third line of the address"
+                />
+                <br />
+                <label for="postcode" class="label6">Postcode</label>
+                <input
+                  type="text"
+                  name="postcode"
+                  id="postcode"
+                  placeholder="post code"
+                  class="input8"
+                  title="The postcode"
+                />
+                <br />
+                <label for="country" class="label6">Country</label>
+                <input
+                  type="text"
+                  name="country"
+                  id="country"
+                  placeholder="country"
+                  class="input10"
+                  title="The country"
+                />
+                <br />
+              </fieldset>
+              <br />
+
+              <fieldset class="fieldSetLeft">
+                <label for="notes" class="label4">Notes</label>
+                <textarea
+                  name="notes"
+                  id="notes"
+                  autofocus
+                  placeholder="free text notes"
+                  rows="5"
+                  cols="68"
+                  title="Notes about the client"
+                ></textarea>
+                <br />
+              </fieldset>
+
+              <button type="submit" id="save">save</button>
+            </form>
+            <div id="close"></div>
+          </div>
+
+          <div id="fileListProduct" class="view">
+            <table id="fileGridProduct"></table>
+            <div class="gridButtons">
+              <div id="add"><span>Add</span></div>
+              <div id="delete"><span>Delete</span></div>
+            </div>
+            <div id="close"></div>
+          </div>
+
+          <div id="fileFormProduct" class="view">
+            <span class="formTitle">Product</span>
+            <form>
+              <fieldset class="fieldSetLeft">
+                <input type="hidden" name="id" id="id" />
+
+                <label for="ref" class="label4">Ref</label>
+                <input
+                  type="text"
+                  name="ref"
+                  id="formProductRef"
+                  autofocus
+                  placeholder="P000"
+                  pattern="[A-Z][0-9]{3}"
+                  class="input6"
+                  required
+                  title="The product reference code"
+                />
+
+                <br />
+                <label for="name" class="label4">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="formProductName"
+                  placeholder="product name"
+                  class="input14"
+                  title="Enter the product name"
+                />
+              </fieldset>
+
+              <button type="submit" id="save">save</button>
+            </form>
+            <div id="close"></div>
+          </div>
+
+          <div id="fileListSalesTeam" class="view">
+            <table id="fileGridSalesTeam"></table>
+            <div class="gridButtons">
+              <div id="add"><span>Add</span></div>
+              <div id="delete"><span>Delete</span></div>
+            </div>
+            <div id="close"></div>
+          </div>
+
+          <div id="fileFormSalesTeam" class="view">
+            <span class="formTitle">Sales Team</span>
+            <form>
+              <fieldset>
+                <input type="hidden" name="id" id="id" />
+
+                <label for="ref" class="label4">Ref</label>
+                <input
+                  type="text"
+                  name="ref"
+                  id="formSalesTeamRef"
+                  autofocus
+                  placeholder="S000"
+                  pattern="[A-Z][0-9]{3}"
+                  class="input6"
+                  required
+                  title="The sales team ref code"
+                />
+                <br />
+
+                <label for="name" class="label4">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="formSalesTeamName"
+                  placeholder="team name"
+                  class="input14"
+                  title="Enter the sales team name"
+                />
+              </fieldset>
+
+              <button type="submit" id="save">save</button>
+            </form>
+            <div id="close"></div>
+          </div>
+        </div>
+
+        <div id="section_about" class="section">
+          <div class="about">
+            <span>Browsers tested :</span>
+            <ul>
+              <li>IE10</li>
+              <li>Firefox18</li>
+              <li>Chrome 24</li>
+              <li>Safari 6</li>
+            </ul>
+
+            <span>Plugins used :</span>
+            <ul>
+              <li>jQuery 1.8.2</li>
+              <li>jQuery UI 1.9.0</li>
+              <li>jqGrid</li>
+            </ul>
+
+            <span>Features :</span>
+            <ul>
+              <li>Native Javascript Prototypal Objects</li>
+              <li>Model View Controller</li>
+              <li>Local Database Emulator</li>
+              <li>Simple to implement new database entities</li>
+            </ul>
+
+            <span>Under Development :</span>
+            <ul>
+              <li>Show a list of open windows in the menu</li>
+              <li>Form input validation</li>
+              <li>Edit-undo</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="section_contact" class="section"></div>
+
+        <div id="footer">
+          <span>&copy; CRMsolve ltd</span>
+          <span><a href="mailto:info@crmsolve.org">info@crmsolve.org</a></span>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
